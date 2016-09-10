@@ -1,0 +1,87 @@
+#!/usr/bin/env python    
+#    Founder : D@nt3 (Ritik Dubey)
+#    Location : India - Russia
+#    Email : blackdeath8765@Gmail.com
+#    Project In SourceForge : https://sourceforge.net/projects/babyf/
+
+import os
+import readline, rlcompleter
+from time import sleep
+from core import wcolors
+from core import menu
+from core import header
+from core import modules_database
+from core import help
+from core import upgrade
+from core import update
+from core import about
+from modules import phpmyadmin
+from modules import arp_dos
+from modules import mitm
+from modules import mfod
+from modules import arp_poisoner
+from modules import webkiller
+from modules import mass_deauth
+
+
+def main():
+    try:
+        line_1 = wcolors.color.UNDERL + wcolors.color.BLUE + "baby" + wcolors.color.ENDC
+        line_1 += " > "
+        terminal = raw_input(line_1)
+        if terminal[0:3] =='use':  
+            if terminal[4:20] =='network/arp_dos':
+                arp_dos.arp_dos()
+                main()
+            elif terminal[4:11] =='web/pma':
+                phpmyadmin.phpmyadmin()
+                main()
+            elif terminal[4:16] =='network/mfod':
+                mfod.mfod()
+                main()
+            elif terminal[4:16] =='network/mitm':
+                mitm.mitm()
+                main()
+            elif terminal[4:17] =='network/mlitm':
+                mlitm.mlitm()
+                main()
+            elif terminal[4:21] =='network/webkiller':
+                webkiller.webkiller()
+                main()
+            elif terminal[4:24] =='network/arp_poisoner':
+                arp_poisoner.arp_poisoner()
+                main()
+            elif terminal[4:20] =='wifi/mass_deauth':
+                mass_deauth.mass_deauth()
+                main()
+        elif terminal[0:12] == 'show modules':
+            modules_database.modules_database()
+            main()
+        elif terminal[0:4] =='help':
+            help.help()
+            main()
+        elif terminal[0:2] =='os':
+            os.system(terminal[3:])
+            main()
+        elif terminal[0:7] =='upgrade':
+            upgrade.upgrade()
+            main()
+        elif terminal[0:6] =='update':
+            update.update()
+        elif terminal[0:5] =='about':
+            about.about()
+            main()
+        elif terminal[0:4] =='exit':
+            exit()
+        else:
+            print "Wrong Command => ", terminal
+            main()
+    except(KeyboardInterrupt):
+        print(wcolors.color.RED + "\n[*] (Ctrl + C ) Detected, BABY going Down..." + wcolors.color.ENDC)
+        print(wcolors.color.YELLOW + "[*] Thank You For Using BABY  =)" + wcolors.color.ENDC)
+def start():
+    header.main_header()
+    menu.main_info()
+    main()
+if __name__=='__main__':
+    start()
