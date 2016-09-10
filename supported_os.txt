@@ -1,0 +1,4 @@
+supported OS
+kali linux
+Parrot 
+and all hacking distros
